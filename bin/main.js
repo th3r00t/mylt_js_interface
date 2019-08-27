@@ -21,8 +21,6 @@ function onConnect() {
             client.send(message)
             message = null
         }
-    } else {
-        startConnect()
     }
 }
 // Called when the client loses its connection
