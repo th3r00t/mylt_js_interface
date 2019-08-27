@@ -16,12 +16,13 @@ function startConnect() {
 }
 // Called when the client connects
 function onConnect() {
-    if (!client.connected) {
+    if (client.isConnected()) {
+        if (message) {
+            client.send(message)
+            message = null
+        }
+    } else {
         startConnect()
-    }
-    if (message) {
-        client.send(message)
-        message = null
     }
 }
 // Called when the client loses its connection
