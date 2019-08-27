@@ -1,0 +1,17 @@
+{
+  "name": "mylt_interface",
+  "version": "1.0.0",
+  "description": "Home Automation Interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "testPackage()"
+  },
+  "keywords": [
+    "Home",
+    "Automation",
+    "Control",
+    "Panel"
+  ],
+  "author": "Mike Young",
+  "license": "ISC"
+}
