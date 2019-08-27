@@ -10,16 +10,16 @@ function startConnect() {
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
     // Connect the client, if successful, call onConnect function
-    client.connect({ 
+    client.connect({
         onSuccess: onConnect,
     });
 }
 // Called when the client connects
 function onConnect() {
-    // Fetch the MQTT topic from the form
-    topic = 'lighting/benchlight'
-    // Subscribe to the requested topic
-    client.subscribe(topic);
+    if (message) {
+        client.send(message)
+        message = null
+    }
 }
 // Called when the client loses its connection
 function onConnectionLost(responseObject) {
@@ -29,10 +29,11 @@ function onConnectionLost(responseObject) {
 }
 // Called when a message arrives
 function onMessageArrived(message) {
-    console.log("onMessageArrived: " + message.payloadString);
+    console.log("Message: " + message.payloadString);
 }
 // Called when the disconnection button is pressed
 function startDisconnect() {
     client.disconnect();
-    document.getElementById("messages").innerHTML += '<span>Disconnected</span><br/>';
+    document.getElementById("messages").innerHTML +=
+        '<span>Disconnected</span><br/>';
 }

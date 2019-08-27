@@ -1,7 +1,15 @@
 $(document).ready(function() {
-
+    startConnect()
     $("div#benchlight").click(function() {
         console.log('toggle')
+        message = new Paho.MQTT.Message("0");
+        message.destinationName = 'lighting/benchlight'
+        message.qos = 0
+        message.retained = false
+        onConnect()
+    });
+});
+/*
         $.ajax({
             type: "POST",
             url: '/controller',
@@ -9,7 +17,4 @@ $(document).ready(function() {
             success: '',
             dataType: 'json'
         });
-        // rt = $.post('/controller') // , $(this).id)
-        // console.log(rt.responseText)
-    });
-});
+*/
