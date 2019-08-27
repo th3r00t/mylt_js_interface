@@ -9,12 +9,3 @@ $(document).ready(function() {
         onConnect()
     });
 });
-/*
-        $.ajax({
-            type: "POST",
-            url: '/controller',
-            data: '',
-            success: '',
-            dataType: 'json'
-        });
-*/

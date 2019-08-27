@@ -16,6 +16,9 @@ function startConnect() {
 }
 // Called when the client connects
 function onConnect() {
+    if (!client.connected) {
+        startConnect()
+    }
     if (message) {
         client.send(message)
         message = null
