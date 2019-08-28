@@ -20,14 +20,14 @@ function onConnect() {
         if (message) {
             client.send(message)
             message = null
+        } else {
+            console.log("No Message Waiting")
         }
     }
 }
 // Called when the client loses its connection
 function onConnectionLost(responseObject) {
-    client.connect({
-        onSuccess: onConnect,
-    });
+    startConnect()
 }
 // Called when a message arrives
 function onMessageArrived(message) {

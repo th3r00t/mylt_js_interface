@@ -1,7 +1,7 @@
 $(document).ready(function() {
     first_run = true
     startConnect()
-    // Click handlers
+        // Click handlers
     $("div#benchlight").click(function() {
         console.log('toggle')
         message = new Paho.MQTT.Message("0");
