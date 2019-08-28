@@ -11,8 +11,11 @@ $(document).ready(function() {
         onConnect()
     });
     if (first_run) {
-        if (client.isConnected()) {
+        cnx_state = client.isConnected()
+        if (cnx_state) {
             message = new Paho.MQTT.Message("2")
+        } else {
+            //startConnect()
         }
     }
     first_run = false

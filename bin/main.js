@@ -12,14 +12,19 @@ function startConnect() {
     // Connect the client, if successful, call onConnect function
     client.connect({
         onSuccess: onConnect,
+        reconnect: true,
+        keepAliveInterval: (60 * 60 * 24),
+        onFailure: connectionFailed,
     });
 }
 // Called when the client connects
 function onConnect() {
-    if (client.isConnected()) {
-        if (message) {
+    cnx_status = client.isConnected()
+    console.log("Connected")
+    if (cnx_status) {
+        if (message !== undefined) {
             client.send(message)
-            message = null
+            message = undefined
         } else {
             console.log("No Message Waiting")
         }
@@ -27,7 +32,13 @@ function onConnect() {
 }
 // Called when the client loses its connection
 function onConnectionLost(responseObject) {
-    startConnect()
+    console.log(responseObject)
+    cnx_status = client.isConnected()
+}
+
+function connectionFailed(invocationContext) {
+    console.log("Connection Failed")
+    console.log(invocationContext)
 }
 // Called when a message arrives
 function onMessageArrived(message) {
