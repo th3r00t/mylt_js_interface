@@ -13,5 +13,8 @@
     "Panel"
   ],
   "author": "Mike Young",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.2.2"
+  }
 }
